@@ -1,0 +1,4 @@
+game.c:20:6:game	16	static
+game.c:57:6:lifes	16	static
+game.c:88:6:score	8	static
+game.c:95:6:shield	16	static
