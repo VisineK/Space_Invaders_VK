@@ -37,10 +37,10 @@
 #define SHOOT_BOOS_APPEARANCE ('ᚖ')         // appearance of the BOSS shoot
 #define LIFE_BOSS (5)                       // life of BOSS
 
-/*
+
 #define ID_MAX (21)
 #define ID_BOSS (22)
-*/
+
 
 // Spaceship
 void init_spaceship(void);

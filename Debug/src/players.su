@@ -1,0 +1,4 @@
+players.c:65:6:init_spaceship	8	static
+players.c:77:6:move_spaceship	16	static
+players.c:99:6:shoot_spaceship	16	static
+players.c:127:6:init_enemies	16	static

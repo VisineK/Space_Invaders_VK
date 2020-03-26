@@ -19,6 +19,17 @@
 
 info_enemies *p_enem;
 
+typedef struct {
+	uint8_t E1[7][5];
+	uint8_t E2[7][5];
+	uint8_t E3[7][5];
+	uint8_t Boss[1][5];
+}pos_enem;
+
+pos_enem position_enemies;
+pos_enem *p_enem = &position_enemies;
+
+ou
 
 info_enemies tab_enem[22] = {
 		{ 10, 4, LIFE_ENEM, 0, SIZE_ENEM },		// x, y, life, ID, size

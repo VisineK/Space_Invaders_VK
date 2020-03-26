@@ -27,7 +27,7 @@ void game(void){
 	//uint8_t i=0;
 
 	init_spaceship();
-	init_enemies();
+	//init_enemies();
 
 	while(1){
 		uint8_t touch = serial_get_last_char();
@@ -38,12 +38,6 @@ void game(void){
 
 		move_spaceship(touch);
 		shoot_spaceship(touch);
-
-/*
-		for(i = 0; i <= ID_MAX; i++){
-			hitbox_enem(&tab_enem[i]);
-		}
-*/
 
 
 		if(serial_get_last_char() == 'r'){
@@ -57,6 +51,7 @@ void game(void){
 		}
 	}
 }
+
 
 
 void lifes(void){

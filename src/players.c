@@ -28,18 +28,8 @@ uint8_t shooty;
 
 /* ENEMIES */
 
-/*
-typedef struct {
-	uint8_t E1[7][5];
-	uint8_t E2[7][5];
-	uint8_t E3[7][5];
-	uint8_t Boss[1][5];
-}pos_enem;
-
-pos_enem position_enemies;
-pos_enem *p_enem = &position_enemies;
-
-uint8_t info_enemies tabenem[22][5] = {
+/* Enemy information board */
+uint8_t tab_enem[22][5] = {
 		{ 10, 4, LIFE_ENEM, 0, SIZE_ENEM },		// x, y, life, ID, size
 		{ 20, 4, LIFE_ENEM, 1, SIZE_ENEM },
 		{ 30, 4, LIFE_ENEM, 2, SIZE_ENEM },
@@ -64,7 +54,7 @@ uint8_t info_enemies tabenem[22][5] = {
 		{ 40, 5, LIFE_BOSS, ID_BOSS, SIZE_ENEM },
 };
 
-//static uint8_t life_enem = 0;*/
+//static uint8_t life_enem = 0;
 
 
 
@@ -81,6 +71,7 @@ void init_spaceship(void){
 	vt100_move(xship, yship);
 	serial_puts(SHIP_APPEARANCE);
 }
+
 
 /* Function for left and right movement of the spaceship */
 void move_spaceship(uint8_t move){
@@ -102,6 +93,7 @@ void move_spaceship(uint8_t move){
 	}
 
 }
+
 
 /* Function to shoot with the spaceship */
 void shoot_spaceship(uint8_t tir){
@@ -131,88 +123,24 @@ void shoot_spaceship(uint8_t tir){
 
 /* ENEMIES */
 
-/*
+
 void init_enemies(void){
+	uint8_t i;
 
-	vt100_move(10, 4);
-	serial_puts(ENEM_APPEARANCE1);
-	vt100_move(20, 4);
-	serial_puts(ENEM_APPEARANCE1);
-	vt100_move(30, 4);
-	serial_puts(ENEM_APPEARANCE1);
-	vt100_move(40, 4);
-	serial_puts(ENEM_APPEARANCE1);
-	vt100_move(50, 4);
-	serial_puts(ENEM_APPEARANCE1);
-	vt100_move(60, 4);
-	serial_puts(ENEM_APPEARANCE1);
-	vt100_move(70, 4);
-	serial_puts(ENEM_APPEARANCE1);
+	for(i = 0; i < 21; i++){
 
-	vt100_move(10, 6);
-	serial_puts(ENEM_APPEARANCE2);
-	vt100_move(20, 6);
-	serial_puts(ENEM_APPEARANCE2);
-	vt100_move(30, 6);
-	serial_puts(ENEM_APPEARANCE2);
-	vt100_move(40, 6);
-	serial_puts(ENEM_APPEARANCE2);
-	vt100_move(50, 6);
-	serial_puts(ENEM_APPEARANCE2);
-	vt100_move(60, 6);
-	serial_puts(ENEM_APPEARANCE2);
-	vt100_move(70, 6);
-	serial_puts(ENEM_APPEARANCE2);
+		if(i < 7){
+			vt100_move(tab_enem[i][0], tab_enem[i][1]);
+			serial_puts(ENEM_APPEARANCE3);
+		}else if (i < 14){
 
-	vt100_move(10, 8);
-	serial_puts(ENEM_APPEARANCE3);
-	vt100_move(20, 8);
-	serial_puts(ENEM_APPEARANCE3);
-	vt100_move(30, 8);
-	serial_puts(ENEM_APPEARANCE3);
-	vt100_move(40, 8);
-	serial_puts(ENEM_APPEARANCE3);
-	vt100_move(50, 8);
-	serial_puts(ENEM_APPEARANCE3);
-	vt100_move(60, 8);
-	serial_puts(ENEM_APPEARANCE3);
-	vt100_move(70, 8);
-	serial_puts(ENEM_APPEARANCE3);
+			vt100_move(tab_enem[i][0], tab_enem[i][1]);
+			serial_puts(ENEM_APPEARANCE2);
+		}else{
 
-}
-
-	for(x = 0; x != 7; x ++){
-		p_enem->E1[x][0] = x * 10;
-		p_enem->E2[x][0] = x * 10;
-		p_enem->E3[x][0] = x * 10;
-
-		p_enem->E1[x][1] = 4;
-		p_enem->E2[x][1] = 6;
-		p_enem->E3[x][1] = 8;
-
-		p_enem->E1[x][2] = LIFE_ENEM;
-		p_enem->E2[x][2] = LIFE_ENEM;
-		p_enem->E3[x][2] = LIFE_ENEM;
-
-		p_enem->E1[x][3] = x;
-		p_enem->E2[x][3] = x + 7;
-		p_enem->E3[x][3] = x + 14;
-
-		p_enem->E1[x][4] = SIZE_ENEM;
-		p_enem->E2[x][4] = SIZE_ENEM;
-		p_enem->E3[x][4] = SIZE_ENEM;
-
-		if(x < 7)
-		vt100_move(tab_enem[i][j], tab_enem[i][j]);
-		serial_puts(ENEM_APPEARANCE3);
-	}else if (i < 14){
-
-		vt100_move(tab_enem[i][j], tab_enem[i][j]);
-		serial_puts(ENEM_APPEARANCE2);
-	}else{
-
-		vt100_move(tab_enem[i][j], tab_enem[i][j]);
-		serial_puts(ENEM_APPEARANCE1);
+			vt100_move(tab_enem[i][0], tab_enem[i][1]);
+			serial_puts(ENEM_APPEARANCE1);
+		}
 	}
-}*/
+}
 
