@@ -12,7 +12,7 @@
 #include "menu.h"
 #include "game.h"
 #include "rules.h"
-#include "player.h"
+#include "players.h"
 
 
 void rules(void){
@@ -66,14 +66,14 @@ void rules(void){
 	serial_puts("Good luck !	May fate be favorable to you");
 
 	while(1){
-		if(serial_get_last_char() == ' '){
-			vt100_clear_screen();
-			window_vt100();
-			game();
-		}else if(serial_get_last_char() == 'm'){
-			vt100_clear_screen();
-			window_vt100();
-			home();
+		if(serial_get_last_char() == ' '){				// Condition to launch the game
+			vt100_clear_screen();						// if we press space
+			window_vt100();								// clear screen and display VT100 borders
+			game();										// call the game function
+		}else if(serial_get_last_char() == 'm'){		// Condition to return to the menu 
+			vt100_clear_screen();						// if we press M
+			window_vt100();								// clear screen and display VT100 borders
+			home();										// call menu function
 		}
 	}
 }

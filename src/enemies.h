@@ -31,4 +31,5 @@ void init_enemies(void);
 void hitbox_enem(info_enemies *p_enem);
 
 #endif /* ENEMIES_H_ */
-*/
+
+

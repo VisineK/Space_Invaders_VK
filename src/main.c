@@ -38,7 +38,7 @@ SOFTWARE.
 #include "menu.h"
 #include "rules.h"
 #include "game.h"
-#include "player.h"
+#include "players.h"
 
 /* Private macro */
 /* Private variables */
@@ -56,9 +56,10 @@ int main(void)
 {
   int i = 0;
 
-  init();
-  home();
-  /**
+  init();	// Call to init function
+  home();	// Call to home function
+
+  /*
   *  IMPORTANT NOTE!
   *  The symbol VECT_TAB_SRAM needs to be defined when building the project
   *  if code has been located to RAM and interrupts are used. 

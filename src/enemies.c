@@ -14,7 +14,7 @@
 #include "menu.h"
 #include "game.h"
 #include "rules.h"
-#include "player.h"
+#include "players.h"
 #include "enemies.h"
 
 info_enemies *p_enem;

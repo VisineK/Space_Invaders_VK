@@ -11,6 +11,6 @@
 #include "initialization.h"
 
 void init(void){
-	serial_init(BAUDS);
-	vt100_clear_screen();
+	serial_init(BAUDS);		// Initialization of the transmission speed (in seconds)
+	vt100_clear_screen();	// Clear screen
 }
