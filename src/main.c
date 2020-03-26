@@ -56,8 +56,8 @@ int main(void)
 {
   int i = 0;
 
-  init();
-  home();
+  init();	// Call to init function
+  home();	// Call to home function
   /**
   *  IMPORTANT NOTE!
   *  The symbol VECT_TAB_SRAM needs to be defined when building the project
