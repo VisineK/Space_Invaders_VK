@@ -1,8 +1,8 @@
 /*
  * delay.c
  *
- *  Created on: 20 mars 2020
- *      Author: kiki
+ *  Created on: 07 janviers 2020
+ *      Author: VisineK
  */
 
 #include "vt100.h"

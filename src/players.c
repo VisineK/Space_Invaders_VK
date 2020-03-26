@@ -1,9 +1,10 @@
 /*
  * player.c
  *
- *  Created on: 20 mars 2020
- *      Author: kiki
+ *  Created on: 07 janviers 2020
+ *      Author: VisineK
  */
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -15,10 +16,17 @@
 #include "players.h"
 #include "delay.h"
 
-static uint8_t xship;							// coordinates ship x
-static uint8_t yship;							// coordinates ship y
-uint8_t shootx;									// coordinates shoot ship x
-uint8_t shooty;									// coordinates shoot ship y
+
+/* SPACESHIP */
+
+/* Declaration coordinates x and y for the ship and shoot */
+static uint8_t xship;
+static uint8_t yship;
+uint8_t shootx;
+uint8_t shooty;
+
+
+/* ENEMIES */
 
 /*
 typedef struct {
@@ -54,69 +62,76 @@ uint8_t info_enemies tabenem[22][5] = {
 		{ 60, 8, LIFE_ENEM, 19, SIZE_ENEM },
 		{ 70, 8, LIFE_ENEM, 20, SIZE_ENEM },
 		{ 40, 5, LIFE_BOSS, ID_BOSS, SIZE_ENEM },
-};*/
+};
 
-//static uint8_t life_enem = 0;
+//static uint8_t life_enem = 0;*/
 
 
-void init_spaceship(void){						//
-	xship = INIT_SHIP_X;						//
-	yship = INIT_SHIP_Y;						//
-												// Initializes the coordinates 
-	shooty = INIT_SHOOT_Y;						// of the ship and the shoot
-												//
-	vt100_move(xship, yship);					//															//
-	serial_puts(SHIP_APPEARANCE);				// We display the ship
+
+
+/* SPACESHIP */
+
+/* Initializes the coordinates ship and shoot */
+void init_spaceship(void){
+	xship = INIT_SHIP_X;
+	yship = INIT_SHIP_Y;
+
+	shooty = INIT_SHOOT_Y;
+
+	vt100_move(xship, yship);
+	serial_puts(SHIP_APPEARANCE);
 }
 
+/* Function for left and right movement of the spaceship */
+void move_spaceship(uint8_t move){
 
-void move_spaceship(uint8_t move){				// Initialization of the spaceship movement
+	if ((move == 'q') && (xship > 3)){
 
-	if ((move == 'q') && (xship > 3)){			// If you press "q" and the ship's x is > 3, then
-												//
-		vt100_move(xship, yship);				//
-		serial_puts(SHIP_NO_APPEARANCE);		// We erase the ship
-		xship -= 1;								// We decrement x
-		vt100_move(xship, yship);				// And we display the ship at the new coordinates
-		serial_puts(SHIP_APPEARANCE);			//
-												//
-	}else if((move == 'd') && (xship < 74)){	// If you press "d" and the ship's x is < 74, then
-		vt100_move(xship, yship);				//
-		serial_puts(SHIP_NO_APPEARANCE);		// We erase the ship
-		xship += 1;								// We increment x
-		vt100_move(xship, yship);				// And we display the ship at the new coordinates
-		serial_puts(SHIP_APPEARANCE);			//
+		vt100_move(xship, yship);
+		serial_puts(SHIP_NO_APPEARANCE);
+		xship -= 1;
+		vt100_move(xship, yship);
+		serial_puts(SHIP_APPEARANCE);
+
+	}else if((move == 'd') && (xship < 74)){
+		vt100_move(xship, yship);
+		serial_puts(SHIP_NO_APPEARANCE);
+		xship += 1;
+		vt100_move(xship, yship);
+		serial_puts(SHIP_APPEARANCE);
 	}
 
 }
 
+/* Function to shoot with the spaceship */
+void shoot_spaceship(uint8_t tir){
 
-void shoot_spaceship(uint8_t tir){				// Initialization of the spaceship shoot
-
-	if(shooty == 22){							// We place the coordinates of the missile 
-		shootx = xship + 2;						// in the middle of the ship
+	if(shooty == 22){ 
+		shootx = xship + 2;
 	}
 
-	if((tir == 'z') || (shooty != 22)){			// If you press "z" and the y of the shoot is != 22, then
+	if((tir == 'z') || (shooty != 22)){
 
-		vt100_move(shootx, shooty);				//
-		serial_puts(SHIP_NO_APPEARANCE);		// We erase the shoot
-		shooty -= 1;							// We decrement y
-		vt100_move(shootx, shooty);				// And we display the shoot at the new coordinates
-		serial_puts(SHOOT_APPEARANCE);			//
+		vt100_move(shootx, shooty);
+		serial_puts(SHIP_NO_APPEARANCE);
+		shooty -= 1;
+		vt100_move(shootx, shooty);
+		serial_puts(SHOOT_APPEARANCE);
 	}
 
-	if (shooty == 3)							// If the y of the shoot is == 3, then
+	if (shooty == 3)
 	{
-		vt100_move(shootx, shooty);				//
-		serial_puts(SHIP_NO_APPEARANCE);		// We erase the shoot
+		vt100_move(shootx, shooty);
+		serial_puts(SHIP_NO_APPEARANCE);
 
-		shooty = INIT_SHOOT_Y;					// And we reset the shoot y to the original coordinates
+		shooty = INIT_SHOOT_Y;
 	}
 }
 
 
+/* ENEMIES */
 
+/*
 void init_enemies(void){
 
 	vt100_move(10, 4);
@@ -165,7 +180,7 @@ void init_enemies(void){
 	serial_puts(ENEM_APPEARANCE3);
 
 }
-/*
+
 	for(x = 0; x != 7; x ++){
 		p_enem->E1[x][0] = x * 10;
 		p_enem->E2[x][0] = x * 10;

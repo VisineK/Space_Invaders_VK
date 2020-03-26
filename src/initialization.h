@@ -1,8 +1,8 @@
 /*
  * initialization.h
  *
- *  Created on: 12 mars 2020
- *      Author: Killian_V
+ *  Created on: 07 janviers 2020
+ *      Author: VisineK
  */
 
 #ifndef INITIALIZATION_H_
